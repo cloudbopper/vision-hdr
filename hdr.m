@@ -1,7 +1,7 @@
 % HDR script
 
-clear all;
-close all;
+% clear all;
+% close all;
 clc;
 
 %% load image metadata
@@ -18,7 +18,7 @@ shutter_times = imlist.data;
 % log of shutter times
 B = log(shutter_times);
 % lambda
-l = 0.5;
+l = 20;
 % number of sampled points
 Nx = 10;
 Ny = 10;
@@ -51,11 +51,16 @@ for i=1:Nx
 end
 disp('Done.');
 
-%% build Z
+%% build Z,M
+
+% raw pixel data for all images
+M = zeros(m,n,NC,P);
+
 disp('Building Z...');
 for i=1:P
     image_name = strcat(dir,image_names{i});
     A = imread(image_name);
+    M(:,:,:,i) = A;
     for j=1:size(A,3)
         for k=1:N
             Z(k,i,j) = A(idx(k,1),idx(k,2),j);
@@ -71,9 +76,35 @@ disp('Running HDR optimization...');
 gs = zeros(V,NC);
 lEs = zeros(N,NC);
 for i=1:NC
-    [g, lE] = gsolve(Z(:,:,i),B,l,@w);
+    [g, lE] = gsolve(Z(:,:,i),B,l,@(z)(128-abs(128-Zij)));
     gs(:,i) = g;
     lEs(:,i) = lE;
 end
-
 disp('Done.');
+
+%% create radiance map from recovered g
+disp('Creating radiance map...');
+R = zeros(m,n,NC);
+for k=1:NC
+    g = gs(:,k);
+    for x=1:m
+        for y=1:n
+            i = (x-1)*n+y;
+            num = 0;
+            den = 0;
+            for j=1:P
+                Zij = M(x,y,k,j) + 1;
+                weight = 128-abs(128-Zij);
+                num = num + weight*(g(Zij)-B(j));
+                den = den + weight;
+            end
+            R(x,y,k) = num/den;
+        end
+    end
+end
+R = exp(R);
+disp('Done.');
+
+%% tonemapping
+O = tonemap(R);
+imwrite(O,'test.png');
