@@ -2,8 +2,9 @@ function [ grayScale ] = toGrayScale( imagePix )
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %toGrayScale: Converts the given image pixel values to Gray Scale
-%   Arguments: pixelVals of a given image read using readImagePixels.m
-%   Return values:
+%   Argument: 
+%       imagePix - pixel values of some image read using readImagePixels.m
+%   Return value:
 %       grayScale - the pixel values of the given image in gray scale
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -25,7 +26,5 @@ end
 
 grayScale = uint8(grayScale);
 
-%imshow(grayScale);
-imwrite(grayScale, '/Users/cs/Documents/MATLAB/vision-hdr/MTB/outputImage.jpg');
 end
 

@@ -1,14 +1,14 @@
-function [ imgList, T, pixelVals ] = readImagePixels( dir )
+function [ imgList, B, pixelVals ] = readImagePixels( dir )
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %readImagePixels Reads the image files and shutter speed values
-%   Arguments: absolute pathname of the directory containing image files
+%   Argument: 
+%       dir - absolute pathname of the directory containing image files
 %   Return values:
 %       imgList - list of image files in the directory
-%       T - log of shutter times
-%       pixelVals - 
-%
-%
+%       B - log of shutter times
+%       pixelVals - stores the pixel values for all the images in the given
+%                   directory
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 dir = strcat(dir, '/');
@@ -19,7 +19,7 @@ imgList = metadata.textdata;
 shutterTimes = metadata.data;
 
 %Calculating log of shutter times
-T = log(shutterTimes);
+B = log(shutterTimes);
 
 %Determining number of images
 [imgCount, yDim] = size(imgList);
@@ -38,6 +38,8 @@ for i = 1:imgCount
 
     pixelVals(i, :, :, :) = img;
 end
+
+pixelVals = uint8(pixelVals);
 
 end
 
