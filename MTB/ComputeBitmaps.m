@@ -1,17 +1,17 @@
-function [ threshBitmap, exclBitmap ] = ComputeBitmaps( image, threshold, tolerance )
+function [ threshBitmap, exclBitmap ] = ComputeBitmaps( image, percentile, tolerance )
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %ComputeBitmaps: Computing the bitmap and the exlusion bitmap
 %   Argument: 
 %       image - pixel values of the image which is to be processed
-%       threshold - percentile value for creating the bitmap
+%       percentile - percentile value for creating the bitmap
 %       tolerance - tolerance value for exclusion bitmap
 %   Return value:
 %       threshBitmap - pixel values of the bitmap
 %       exclBitmap - pixel values of the exclusion bitmap
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-imgPercentile = prctile(image(:), threshold);
+imgPercentile = prctile(image(:), percentile);
 rowSize = size(image, 1);
 colSize = size(image, 2);
 
@@ -28,7 +28,7 @@ for row = 1:rowSize
             threshBitmap(row, col) = 1;
         end
         %Computing exclusion bitmap
-        if(pix < (threshold - tolerance) || pix > (threshold + tolerance))
+        if(pix < (percentile - tolerance) || pix > (percentile + tolerance))
             exclBitmap(row, col) = 1;
         else
             exclBitmap(row, col) = 0;
