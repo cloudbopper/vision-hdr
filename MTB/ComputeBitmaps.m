@@ -2,11 +2,11 @@ function [ threshBitmap, exclBitmap ] = ComputeBitmaps( image, percentile )
 %UNTITLED5 Summary of this function goes here
 %   Detailed explanation goes here
 
-imgPercentile = prctile(image, percentile);
+imgPercentile = prctile(image(:), percentile);
 rowSize = size(image, 1);
 colSize = size(image, 2);
 
-threshBitMap = zeros(rowSize, colSize);
+threshBitmap = zeros(rowSize, colSize);
 
 for row = 1:rowSize
     for col = 1:colSize

@@ -4,11 +4,12 @@ function [ shiftedBm ] = BitmapShift( bm, x0, y0 )
 
 rowSize = size(bm, 1);
 colSize = size(bm, 2);
-shift = zeros(rowSize, colSize);
+shiftedBm = zeros(rowSize, colSize);
 for row = 1:rowSize
     for col = 1:colSize
-        if(row + x <= rowSize && col + y <= colSize  )
-        shiftedBm(row + x, col + y) = bm(row, col);
+        if(row + x <= rowSize && col + y <= colSize )
+            shiftedBm(row + x0, col + y0) = bm(row, col);
+        end
     end
 end
 
