@@ -15,7 +15,7 @@ xorBm = zeros(rowSize, colSize);
 for row = 1:rowSize
     for col = 1:colSize
         pixBm1 = bm1(row, col);
-        pixBm2 = bm1(row, col);
+        pixBm2 = bm2(row, col);
         %XOR'ing between the pixels
         if(pixBm1 == pixBm2)
             xorBm(row, col) = 0;
