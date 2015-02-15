@@ -6,5 +6,6 @@ function [ output_args ] = MTBMain( dir )
 grayScale = toGrayScale(pixelVals(1,:,:,:));
 shrunkImg = ImageShrink2(grayScale);
 ComputeBitmaps(grayScale,50);
+
 end
 
