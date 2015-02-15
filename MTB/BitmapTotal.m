@@ -1,4 +1,5 @@
 function [ bmSum ] = BitmapTotal( bm )
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %BitmapTotal: Summing up values of the bitmap pixels
 %   Argument: 
