@@ -10,7 +10,7 @@ function [ shrunkImg ] = ImageShrink2( image )
 
 %shrunkImg = imresize(image,0.5);
 shrunkImg = imresize(image,'Scale',0.5,'Method','bicubic');
-imwrite(shrunkImg, '/Users/cs/Documents/MATLAB/vision-hdr/MTB/outputImage.jpg');
+imwrite(shrunkImg, '/Users/cs/Documents/MATLAB/vision-hdr/MTB/shrunkImage.jpg');
 
 end
 

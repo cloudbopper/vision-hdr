@@ -24,6 +24,9 @@ B = log(shutterTimes);
 %Determining number of images
 [imgCount, yDim] = size(imgList);
 
+%RGB dimensions
+rgb = 3;
+
 %Reading pixel values for each image
 for i = 1:imgCount
     imgPath = strcat(dir, imgList{i});
@@ -33,13 +36,13 @@ for i = 1:imgCount
     if i == 1
         rowSize = size(img, 1);   
         colSize = size(img, 2);    
-        pixelVals = zeros(i, rowSize, colSize,3);
+        pixelVals = zeros(i, rowSize, colSize, rgb);
     end
 
     pixelVals(i, :, :, :) = img;
 end
 
-pixelVals = uint8(pixelVals);
+%pixelVals = uint8(pixelVals);
 
 end
 

@@ -25,6 +25,7 @@ for row = 1:rowSize
 end
 
 grayScale = uint8(grayScale);
+imwrite(grayScale, '/Users/cs/Documents/MATLAB/vision-hdr/MTB/grayImage.jpg');
 
 end
 
