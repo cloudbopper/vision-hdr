@@ -11,7 +11,7 @@ function [ shrunkImg ] = ImageShrink2( image )
 %Shrinking image by half of its current size
 shrunkImg = imresize(image, 'Scale', 0.5, 'Method', 'bicubic');
 
-imwrite(shrunkImg, '/Users/cs/Documents/MATLAB/vision-hdr/MTB/shrunkImage.jpg');
+%imwrite(shrunkImg, '/Users/cs/Documents/MATLAB/vision-hdr/MTB/shrunkImage.jpg');
 
 end
 

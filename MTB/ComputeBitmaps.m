@@ -37,8 +37,8 @@ for row = 1:rowSize
     end
 end
 
-imwrite(threshBitmap, '/Users/cs/Documents/MATLAB/vision-hdr/MTB/threshBitmap.jpg');
-imwrite(exclBitmap, '/Users/cs/Documents/MATLAB/vision-hdr/MTB/exclusionBitmap.jpg');
+%imwrite(threshBitmap, '/Users/cs/Documents/MATLAB/vision-hdr/MTB/threshBitmap.jpg');
+%imwrite(exclBitmap, '/Users/cs/Documents/MATLAB/vision-hdr/MTB/exclusionBitmap.jpg');
 
 end
 
