@@ -1,4 +1,4 @@
-function [ threshBitmap, exclBitmap ] = ComputeBitmaps( image, percentile, tolerance )
+function [ threshBitmap, exclBitmap ] = ComputeBitmaps( image, percentile )
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %ComputeBitmaps: Computing the bitmap and the exlusion bitmap
@@ -10,6 +10,9 @@ function [ threshBitmap, exclBitmap ] = ComputeBitmaps( image, percentile, toler
 %       threshBitmap - pixel values of the bitmap
 %       exclBitmap - pixel values of the exclusion bitmap
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Check out value and replace later if required
+tolerance = 3;
 
 imgPercentile = prctile(image(:), percentile);
 rowSize = size(image, 1);

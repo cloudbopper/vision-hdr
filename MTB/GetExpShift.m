@@ -1,4 +1,4 @@
-function [ shiftRet ] = GetExpShift( image1, image2, shiftBits, tolerance )
+function [ shiftRet ] = GetExpShift( image1, image2, shiftBits )
 %UNTITLED13 Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -11,7 +11,7 @@ cur_shift = [0 0];
 if shiftBits > 0
     shrunkImg1 = ImageShrink2(image1);
     shrunkImg2 = ImageShrink2(image2);
-    cur_shift = GetExpShift(shrunkImg1, shrunkImg2, shiftBits - 1, tolerance);
+    cur_shift = GetExpShift(shrunkImg1, shrunkImg2, shiftBits - 1);
     cur_shift(1) = cur_shift(1) * 2;
     cur_shift(2) = cur_shift(2) * 2;
 else
@@ -20,8 +20,8 @@ else
 end
 
 percentile = findPercentile(image1, image2);
-[tbm1, ebm1] = ComputeBitmaps(image1, percentile, tolerance);
-[tbm2, ebm2] = ComputeBitmaps(image2, percentile, tolerance);
+[tbm1, ebm1] = ComputeBitmaps(image1, percentile);
+[tbm2, ebm2] = ComputeBitmaps(image2, percentile);
 min_err = rowSize * colSize;
 for i = -1:1
     for j = -1:1
