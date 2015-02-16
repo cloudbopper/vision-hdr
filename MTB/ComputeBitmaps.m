@@ -11,8 +11,8 @@ function [ threshBitmap, exclBitmap ] = ComputeBitmaps( image, percentile )
 %       exclBitmap - pixel values of the exclusion bitmap
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%Check out value and replace later if required
-tolerance = 3;
+%Tolerance value used in the paper
+tolerance = 4;
 
 imgPercentile = prctile(image(:), percentile);
 rowSize = size(image, 1);
@@ -40,8 +40,8 @@ for row = 1:rowSize
     end
 end
 
-%imwrite(threshBitmap, '/Users/cs/Documents/MATLAB/vision-hdr/MTB/threshBitmap.jpg');
-%imwrite(exclBitmap, '/Users/cs/Documents/MATLAB/vision-hdr/MTB/exclusionBitmap.jpg');
+imwrite(threshBitmap, '/Users/cs/Documents/MATLAB/vision-hdr/MTB/threshBitmap.jpg');
+imwrite(exclBitmap, '/Users/cs/Documents/MATLAB/vision-hdr/MTB/exclusionBitmap.jpg');
 
 end
 
