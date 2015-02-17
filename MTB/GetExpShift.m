@@ -1,6 +1,14 @@
 function [ shiftRet ] = GetExpShift( image1, image2, shiftBits )
-%UNTITLED13 Summary of this function goes here
-%   Detailed explanation goes here
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%GetExpShift: Determine shift value for image2 given image1 as reference
+%image
+%   Argument: 
+%       image1 & image2 - pixel values for all the two images
+%       shiftBits - maximum number of bits in the final offsets
+%   Return value:
+%       shiftRet - x and y shift values for image2
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 rowSize = size(image1, 1);
 colSize = size(image1, 2);

@@ -18,19 +18,15 @@ imgPercentile = prctile(image(:), percentile);
 rowSize = size(image, 1);
 colSize = size(image, 2);
 
-threshBitmap = zeros(rowSize, colSize);
+%Computing bitmap
+threshBitmap = image > imgPercentile;
+
 exclBitmap = zeros(rowSize, colSize);
 
 
 for row = 1:rowSize
     for col = 1:colSize
         pix = image(row, col);
-        %Computing bitmap
-        if(pix <= imgPercentile)
-           threshBitmap(row, col) = 0;
-        else
-           threshBitmap(row, col) = 1;
-        end
         %Computing exclusion bitmap
         if(pix < (imgPercentile - tolerance) || pix > (imgPercentile + tolerance))
             exclBitmap(row, col) = 1;

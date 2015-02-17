@@ -23,7 +23,7 @@ for row = 1:rowSize
     end
 end
 
-imwrite(shiftedBm, '/Users/cs/Documents/MATLAB/vision-hdr/MTB/shiftedBm.jpg');
+%imwrite(shiftedBm, '/Users/cs/Documents/MATLAB/vision-hdr/MTB/shiftedBm.jpg');
 
 end
 

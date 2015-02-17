@@ -1,6 +1,16 @@
 function [ shifts ] = findShifts( pixelVals, refImage, shiftBits, filterFlag )
-%UNTITLED14 Summary of this function goes here
-%   Detailed explanation goes here
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%findShifts: Determine shift values for all the images
+%   Argument: 
+%       pixelVals - pixel values for all the images
+%       refImage - index of the base reference image to which other images
+%       will be aligned
+%       shiftBits - maximum number of bits in the final offsets
+%       filterFlag - flag whether to use edge filtering or not
+%   Return value:
+%       shifts - x and y shift values for all the images
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 numPhotos = size(pixelVals, 1);
 shifts = zeros(numPhotos, 2);
@@ -40,8 +50,6 @@ for i = refImage:numPhotos
         shifts(i + 1, :) = shiftRet;
     end
 end
-
-
 
 end
 

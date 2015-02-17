@@ -12,7 +12,6 @@ function [ imgList, B, pixelVals ] = readImagePixels( dir )
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 dir = strcat(dir, '/');
-%Temporarily hard-coding the txt file name
 imgListFile = strcat(dir, 'image_list.txt');
 metadata = importdata(imgListFile, ' ', 0);
 

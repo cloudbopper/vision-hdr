@@ -8,7 +8,6 @@ function [ andBm ] = BitmapAND( bm1, bm2 )
 %       xorBm - AND'ed result between bm1 and bm2
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
 rowSize = size(bm1, 1);
 colSize = size(bm1, 2);
 andBm = zeros(rowSize, colSize);
