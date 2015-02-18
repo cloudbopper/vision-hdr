@@ -23,8 +23,9 @@ refImage = 1;
 % %Compute shifts without filter
 shiftsNoFilter = findShifts(pixelVals, refImage, shiftBits, 0)
 shiftedPixVals = ApplyShifts(shiftsNoFilter, pixelVals);
-SaveImages(shiftedPixVals);
+[imgList, T, pixelVals] = readImagePixels(dir);
 
+SaveImages(shiftedPixVals, pixelVals);
 % %Compute shifts with filter
 % shiftsWithFilter = findShifts(pixelVals, refImage, shiftBits, 1);
 

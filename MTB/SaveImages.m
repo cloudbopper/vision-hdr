@@ -1,4 +1,5 @@
-function [ output_args ] = SaveImages( shiftedPixelVals )
+function [ output_args ] = SaveImages( shiftedPixelVals, pixelVals )
+
 %UNTITLED3 Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -8,10 +9,11 @@ colSize = size(shiftedPixelVals, 3);
 %image = zeros(rowSize, colSize);
 
 for i = 1:numPhotos
-    image = shiftedPixelVals(i, :, :, :);
+    %image = shiftedPixelVals(i, :, :, :);
+    image = squeeze(shiftedPixelVals(i, :, :, :));
     fileName = sprintf('/Users/cs/Documents/MATLAB/vision-hdr/MTB/img%d.jpg', i);
     imwrite(image, fileName);
 end
-
-end
+% 
+% end
 

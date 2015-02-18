@@ -9,14 +9,14 @@ colSize = size(pixelVals, 3);
 
 %RGB dimensions
 rgb = 3;
-shiftedPixelVals = zeros(numPhotos, rowSize, colSize, rgb);
+%shiftedPixelVals = zeros(numPhotos, rowSize, colSize, rgb);
 
 for i = 1:numPhotos
     xShift = shifts(i, 1);
     yShift = shifts(i, 2);
     for row = 1:colSize
         for col = 1:colSize
-            if(row + xShift <= rowSize && col + yShift <= colSize)
+            if(row + xShift <= rowSize && col + yShift <= colSize && row + xShift > 0 && col + yShift > 0)
                 shiftedPixelVals(i, row + xShift, col + yShift, :) = pixelVals(i, row, col, :);
             end
         end

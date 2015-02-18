@@ -15,7 +15,7 @@ dir = strcat(dir, '/');
 imgListFile = strcat(dir, 'image_list.txt');
 metadata = importdata(imgListFile, ' ', 0);
 
-imgList = metadata.textdata
+imgList = metadata.textdata;
 shutterTimes = metadata.data;
 
 %Calculating log of shutter times
@@ -33,11 +33,11 @@ for i = 1:imgCount
     img = imread(imgPath);
     
     %Init during first image read
-    if i == 1
-        rowSize = size(img, 1);   
-        colSize = size(img, 2);    
-        pixelVals = zeros(i, rowSize, colSize, rgb);
-    end
+%     if i == 1
+%         rowSize = size(img, 1);   
+%         colSize = size(img, 2);    
+%         pixelVals = zeros(i, rowSize, colSize, rgb);
+%     end
 
     pixelVals(i, :, :, :) = img;
 end
