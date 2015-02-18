@@ -1,5 +1,5 @@
 % gsolve.m
-% Solve for imaging system response function
+%% Solve for imaging system response function
 % given a set of pixel values observed for several pixels in several images
 % with different exposure times, this function returns the imaging system?s
 % response function g as well as the log film irradiance values for the 

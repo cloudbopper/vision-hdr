@@ -8,8 +8,8 @@ clc;
 % must be contained in a two-column file
 % with filename in first column and shutter time in second
 disp('Loading image list...');
-dir = 'data/1/';
-imlistfile = strcat(dir, 'image_list.txt');
+dir = strcat('data/1/');
+imlistfile = strcat(dir, '/image_list.txt');
 imlist = importdata(imlistfile, ' ', 0);
 
 image_names = imlist.textdata;
@@ -76,7 +76,7 @@ disp('Running HDR optimization...');
 gs = zeros(V,NC);
 lEs = zeros(N,NC);
 for i=1:NC
-    [g, lE] = gsolve(Z(:,:,i),B,l,@(z)(128-abs(128-Zij)));
+    [g, lE] = gsolve(Z(:,:,i),B,l,@(z)(128-abs(128-z)));
     gs(:,i) = g;
     lEs(:,i) = lE;
 end
@@ -103,8 +103,12 @@ for k=1:NC
     end
 end
 R = exp(R);
+hdrwrite(R, 'result.hdr');
 disp('Done.');
 
 %% tonemapping
-O = tonemap(R);
-imwrite(O,'test.png');
+disp('Tonemapping...');
+O = reinhard(R);
+% O = tonemap(R);
+disp('Done.');
+imwrite(O,'result.png');
