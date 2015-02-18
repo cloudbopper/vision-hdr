@@ -27,7 +27,8 @@ maxDark = totalPix * pixMaxVal * 0.25;
 %For too bright images choosing 17th percentile and for too dark images
 %83rd percentile and 50th percentile for the regular images
 if totalSum >= maxBright
-    percentile = 17;
+    %percentile = 17;
+    percentile = 50;
 elseif totalSum <= maxDark
     percentile = 83;
 else

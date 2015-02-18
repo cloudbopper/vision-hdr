@@ -18,6 +18,7 @@ function [ output_args ] = MTBMain( dir )
 %Just trying out!
 shiftBits = 6;
 refImage = 1;
+dir = strcat(dir, '/');
 
 % 
 % %Compute shifts without filter
@@ -25,7 +26,7 @@ shiftsNoFilter = findShifts(pixelVals, refImage, shiftBits, 0)
 shiftedPixVals = ApplyShifts(shiftsNoFilter, pixelVals);
 [imgList, T, pixelVals] = readImagePixels(dir);
 
-SaveImages(shiftedPixVals, pixelVals);
+SaveImages(shiftedPixVals, dir, imgList);
 % %Compute shifts with filter
 % shiftsWithFilter = findShifts(pixelVals, refImage, shiftBits, 1);
 
