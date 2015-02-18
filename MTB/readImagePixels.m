@@ -15,7 +15,7 @@ dir = strcat(dir, '/');
 imgListFile = strcat(dir, 'image_list.txt');
 metadata = importdata(imgListFile, ' ', 0);
 
-imgList = metadata.textdata;
+imgList = metadata.textdata
 shutterTimes = metadata.data;
 
 %Calculating log of shutter times

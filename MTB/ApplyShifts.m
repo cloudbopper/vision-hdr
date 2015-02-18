@@ -16,7 +16,9 @@ for i = 1:numPhotos
     yShift = shifts(i, 2);
     for row = 1:colSize
         for col = 1:colSize
-            
+            if(row + xShift <= rowSize && col + yShift <= colSize)
+                shiftedPixelVals(i, row + xShift, col + yShift, :) = pixelVals(i, row, col, :);
+            end
         end
     end
 end

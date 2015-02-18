@@ -17,19 +17,21 @@ function [ output_args ] = MTBMain( dir )
 
 %Just trying out!
 shiftBits = 6;
-refImage = 5;
+refImage = 1;
 
 % 
 % %Compute shifts without filter
-% shiftsNoFilter = findShifts(pixelVals, refImage, shiftBits, 0);
-% 
+shiftsNoFilter = findShifts(pixelVals, refImage, shiftBits, 0)
+shiftedPixVals = ApplyShifts(shiftsNoFilter, pixelVals);
+SaveImages(shiftedPixVals);
+
 % %Compute shifts with filter
 % shiftsWithFilter = findShifts(pixelVals, refImage, shiftBits, 1);
 
-grayScale = toGrayScale(pixelVals(1,:,:,:));
-[bm, em] = ComputeBitmaps(grayScale,50);
-shiftedBm = BitmapShift(bm, 2, 50);
-BitmapXOR(bm, bm);
+% grayScale = toGrayScale(pixelVals(1,:,:,:));
+% [bm, em] = ComputeBitmaps(grayScale,50);
+% shiftedBm = BitmapShift(bm, 2, 50);
+% BitmapXOR(bm, bm);
 % shrunkImg = ImageShrink2(grayScale);
 % ComputeBitmaps(grayScale,50,3);
 
