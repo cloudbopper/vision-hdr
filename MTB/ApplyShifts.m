@@ -1,28 +1,23 @@
 function [ shiftedPixelVals ] = ApplyShifts( shifts, pixelVals )
 
-%UNTITLED2 Summary of this function goes here
-%   Detailed explanation goes here
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%BitmapShift: Shift all images on pixelVals by the calculated shifts
+%   Argument: 
+%       shifts - shifts for individual images with respect to reference
+%       image
+%       pixelVals - pixel values for the original images
+%   Return value:
+%       shiftedPixelVals - shifted image pixels
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%Total number of images
 numPhotos = size(pixelVals, 1);
-rowSize = size(pixelVals, 2);
-colSize = size(pixelVals, 3);
-
-%RGB dimensions
-rgb = 3;
-%shiftedPixelVals = zeros(numPhotos, rowSize, colSize, rgb);
 
 for i = 1:numPhotos
     xShift = shifts(i, 1);
     yShift = shifts(i, 2);
-    for row = 1:colSize
-        for col = 1:colSize
-%             if(row + yShift <= rowSize && col + xShift <= colSize && row + yShift > 0 && col + xShift > 0)
-%                 shiftedPixelVals(i, row + yShift, col + xShift, :) = pixelVals(i, row, col, :);
-            if(row + xShift <= rowSize && col + yShift <= colSize && row + xShift > 0 && col + yShift > 0)
-                shiftedPixelVals(i, row + xShift, col + yShift, :) = pixelVals(i, row, col, :);
-            end
-        end
-    end
+    tform = affine2d([1 0 0; 0 1 0; xShift yShift 1]);
+    shiftedPixelVals(i,:,:,:)=imtranslate(squeeze(pixelVals(i, :, :, :)),[xShift yShift]);
 end
 
 end

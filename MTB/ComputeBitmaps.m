@@ -11,8 +11,8 @@ function [ threshBitmap, exclBitmap ] = ComputeBitmaps( image, percentile )
 %       exclBitmap - pixel values of the exclusion bitmap
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%Tolerance value used in the paper
-tolerance = 4;
+%Tolerance value
+tolerance = 0.5;
 
 imgPercentile = prctile(image(:), percentile);
 rowSize = size(image, 1);

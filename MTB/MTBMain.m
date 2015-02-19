@@ -13,7 +13,7 @@ function [ output_args ] = MTBMain( dir )
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %Read the required images
-[imgList, T, pixelVals] = readImagePixels(dir);
+[imgList, pixelVals] = readImagePixels(dir);
 
 %Just trying out!
 shiftBits = 6;
@@ -24,7 +24,7 @@ dir = strcat(dir, '/');
 % %Compute shifts without filter
 shiftsNoFilter = findShifts(pixelVals, refImage, shiftBits, 0)
 shiftedPixVals = ApplyShifts(shiftsNoFilter, pixelVals);
-[imgList, T, pixelVals] = readImagePixels(dir);
+[imgList, pixelVals] = readImagePixels(dir);
 
 SaveImages(shiftedPixVals, dir, imgList);
 % %Compute shifts with filter
