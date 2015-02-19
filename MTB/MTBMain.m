@@ -1,15 +1,10 @@
-function [ output_args ] = MTBMain( dir )
+function [ ] = MTBMain( dir )
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%findShifts: Determine shift values for all the images
+%MTBMain: Runs Ward's MTB algorithm and creates shifted images in the
+%current directory
 %   Argument: 
-%       pixelVals - pixel values for all the images
-%       refImage - index of the base reference image to which other images
-%       will be aligned
-%       shiftBits - maximum number of bits in the final offsets
-%       filterFlag - flag whether to use edge filtering or not
-%   Return value:
-%       shifts - x and y shift values for all the images
+%       dir - absolute pathname of the directory containing image files
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %Read the required images
