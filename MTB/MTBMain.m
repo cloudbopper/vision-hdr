@@ -15,29 +15,14 @@ function [ output_args ] = MTBMain( dir )
 %Read the required images
 [imgList, pixelVals] = readImagePixels(dir);
 
-%Just trying out!
 shiftBits = 6;
 refImage = 1;
 dir = strcat(dir, '/');
 
-% 
-% %Compute shifts without filter
-shiftsNoFilter = findShifts(pixelVals, refImage, shiftBits, 0)
+% Shifts without filter
+shiftsNoFilter = findShifts(pixelVals, refImage, shiftBits, 0);
 shiftedPixVals = ApplyShifts(shiftsNoFilter, pixelVals);
-[imgList, pixelVals] = readImagePixels(dir);
-
 SaveImages(shiftedPixVals, dir, imgList);
-% %Compute shifts with filter
-% shiftsWithFilter = findShifts(pixelVals, refImage, shiftBits, 1);
-
-% grayScale = toGrayScale(pixelVals(1,:,:,:));
-% [bm, em] = ComputeBitmaps(grayScale,50);
-% shiftedBm = BitmapShift(bm, 2, 50);
-% BitmapXOR(bm, bm);
-% shrunkImg = ImageShrink2(grayScale);
-% ComputeBitmaps(grayScale,50,3);
-
-%median_th_pixel=median(grayScale(:))
 
 end
 
