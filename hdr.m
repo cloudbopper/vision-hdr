@@ -4,11 +4,13 @@
 % close all;
 clc;
 
+tic;
 %% load image metadata
 % must be contained in a two-column file
 % with filename in first column and shutter time in second
 disp('Loading image list...');
-dir = strcat('data/1/');
+% dir = strcat('data/1/');
+dir = strcat('/Users/akshaysood/Box Sync/CS766/HDR/data/3/');
 imlistfile = strcat(dir, '/image_list.txt');
 imlist = importdata(imlistfile, ' ', 0);
 
@@ -69,16 +71,14 @@ for i=1:P
 end
 disp('Done.');
 
-%% run hdr optimization
-disp('Running HDR optimization...');
+%% run hdr algorithm
+disp('Running HDR algorithm...');
 
-% run HDR algorithm
 gs = zeros(V,NC);
 lEs = zeros(N,NC);
 for i=1:NC
-    [g, lE] = gsolve(Z(:,:,i),B,l,@(z)(128-abs(128-z)));
-    gs(:,i) = g;
-    lEs(:,i) = lE;
+    gs(:,i) = debevec(Z(:,:,i),B,l,@(z)(128.5-abs(128.5-z)));
+    % gs(:,i) = mitsunaga(Z(:,:,i),B,l,@(z)(128.5-abs(128.5-z)));
 end
 disp('Done.');
 
@@ -94,7 +94,7 @@ for k=1:NC
             den = 0;
             for j=1:P
                 Zij = M(x,y,k,j) + 1;
-                weight = 128-abs(128-Zij);
+                weight = 128.5-abs(128.5-Zij);
                 num = num + weight*(g(Zij)-B(j));
                 den = den + weight;
             end
@@ -112,3 +112,5 @@ O = reinhard(R);
 % O = tonemap(R);
 disp('Done.');
 imwrite(O,'result.png');
+
+toc;

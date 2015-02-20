@@ -1,5 +1,5 @@
-% gsolve.m
-%% Solve for imaging system response function
+% devebec.m
+%% Solve for imaging system response function using Debevec's HDR algorithm
 % given a set of pixel values observed for several pixels in several images
 % with different exposure times, this function returns the imaging system?s
 % response function g as well as the log film irradiance values for the 
@@ -20,10 +20,9 @@
 % Returns:
 %
 % g(z)      : the log exposure corresponding to pixel value z
-% lE(i)     : the log film irradiance at pixel location i 
 %
 
-function [g,lE] = gsolve(Z,B,l,w)
+function g = debevec(Z,B,l,w)
 
 n = 256;
 N = size(Z,1);
@@ -64,4 +63,3 @@ end
 x = A\b;
 
 g = x(1:n);
-lE = x(n+1:size(x,1));

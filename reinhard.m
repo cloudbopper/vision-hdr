@@ -1,7 +1,7 @@
 function [ O ] = reinhard( R )
 %% implementation of Reinhard's tone mapping algorithm
 %
-% input: radiance map R = m x n x c matrix
+% input: RGB radiance map R = m x n x c matrix
 % m = number of vertical pixels
 % n = number of horizontal pixels
 % c = number of channels (R,G,B)
@@ -16,7 +16,7 @@ O = zeros(m,n,c);
 delta = 0.001;
 deltaM = delta*ones(m,n);
 % a: key value (key of the image after applying scaling)
-a = 0.36;
+a = 0.18;
 
 for k=1:c
     % process each channel separately
