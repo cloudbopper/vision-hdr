@@ -34,8 +34,8 @@ Q = size(M,2);
 N = 10;
 % stopping conditions
 epsilon = 0.001;
-max_iter = 1;
-Imax = 100000;
+max_iter = 10;
+Imax = 100;
 
 % coefficients matrix
 C = zeros(N,N+1);
@@ -76,7 +76,7 @@ for i=1:N
         end
         A(end,:) = ones(1,i+1);
         % compute coefficients by solving linear system
-        cs = ridge(b,A,0.1);
+        cs = ridge(b,A,0.01);
         %cs = A\b;
         % recompute ratios
         for q=1:Q-1

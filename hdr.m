@@ -10,7 +10,7 @@ tic;
 % with filename in first column and shutter time in second
 disp('Loading image list...');
 % dir = strcat('data/1/');
-dir = strcat('/Users/akshaysood/Box Sync/CS766/HDR/data/3/');
+dir = strcat('/Users/akshaysood/Box Sync/CS766/HDR/data/Pictures 2/');
 imlistfile = strcat(dir, '/image_list.txt');
 imlist = importdata(imlistfile, ' ', 0);
 
@@ -112,5 +112,8 @@ O = reinhard(R);
 % O = tonemap(R);
 disp('Done.');
 imwrite(O,'result.png');
+
+%% plot response curve
+plot_response_curve(gs);
 
 toc;

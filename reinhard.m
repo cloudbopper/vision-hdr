@@ -16,7 +16,7 @@ O = zeros(m,n,c);
 delta = 0.001;
 deltaM = delta*ones(m,n);
 % a: key value (key of the image after applying scaling)
-a = 0.18;
+a = 0.36;
 
 for k=1:c
     % process each channel separately
